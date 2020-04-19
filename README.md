@@ -1,2 +1,2 @@
-# divdasani.github.io
+# divdasani.com
 My personal website!
