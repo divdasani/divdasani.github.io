@@ -25,8 +25,13 @@
   display: inline;
 }
 
-#json1_3, #json4_3 {
+#json1_3 {
   color: #e6db7a;
+  display: inline;
+}
+
+#json4_3 {
+  color: #cf1f1f;
   display: inline;
 }
 
