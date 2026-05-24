@@ -388,50 +388,99 @@ p { margin: 0; }
   position: relative;
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
-  padding: clamp(28px, 3vw, 40px);
   background:
     radial-gradient(120% 80% at 100% 0%, rgba(212,133,76,0.08) 0%, transparent 60%),
     var(--surface);
   display: grid;
-  gap: 28px;
   align-content: start;
+  overflow: hidden;
 }
-.about__panel-head {
-  display: flex; justify-content: space-between; align-items: baseline;
-  gap: 24px;
+.about__portrait {
+  position: relative;
+  background: #000;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
 }
-.about__panel-head .num {
+.about__portrait img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+.about__portrait::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(14,13,12,0.7) 100%);
+  pointer-events: none;
+}
+.about__portrait-caption {
+  position: absolute;
+  left: clamp(24px, 2.4vw, 32px);
+  bottom: clamp(20px, 2vw, 28px);
+  right: clamp(24px, 2.4vw, 32px);
+  z-index: 1;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+}
+.about__portrait-caption .who {
   font-family: 'Instrument Serif', serif;
   font-style: italic;
-  font-size: clamp(64px, 10vw, 120px);
-  line-height: 0.85;
-  letter-spacing: -0.04em;
-  color: var(--ember);
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.1;
+  color: var(--fg);
+  letter-spacing: -0.01em;
 }
-.about__panel-head .lab {
+.about__portrait-caption .role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-top: 6px;
+}
+.about__portrait-caption .years {
   text-align: right;
-  font-size: 11px;
+  flex-shrink: 0;
+}
+.about__portrait-caption .years .n {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: clamp(40px, 4.6vw, 60px);
+  line-height: 0.9;
+  color: var(--ember);
+  letter-spacing: -0.03em;
+  display: block;
+}
+.about__portrait-caption .years .l {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted);
-  max-width: 16ch;
-  font-family: 'JetBrains Mono', monospace;
+  margin-top: 4px;
+}
+.about__panel-body {
+  padding: clamp(24px, 2.6vw, 36px);
 }
 .about__list {
   list-style: none; padding: 0; margin: 0;
   display: grid;
-  border-top: 1px solid var(--line);
 }
 .about__list li {
-  padding: 18px 0;
+  padding: 16px 0;
   border-bottom: 1px solid var(--line);
   display: grid;
   grid-template-columns: 28px 1fr;
   gap: 14px;
-  font-size: 15px;
+  font-size: 14.5px;
   color: var(--fg-2);
+  line-height: 1.5;
 }
-.about__list li:last-child { border-bottom: 0; }
+.about__list li:first-child { padding-top: 0; }
+.about__list li:last-child { border-bottom: 0; padding-bottom: 0; }
 .about__list .marker {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
@@ -1153,17 +1202,28 @@ p { margin: 0; }
       </div>
     </div>
 
-    <aside class="about__panel reveal" aria-label="At a glance">
-      <div class="about__panel-head">
-        <div class="num">28</div>
-        <div class="lab">Years sharpening the craft of attention</div>
+    <aside class="about__panel reveal" aria-label="Meet Bill">
+      <figure class="about__portrait">
+        <img src="images/resilientautodetail/13.png" alt="Bill Oglesby, owner of Resilient Auto Detail, leaning against his green Ford F-150 in Las Vegas" loading="lazy" />
+        <figcaption class="about__portrait-caption">
+          <div>
+            <div class="who">Bill Oglesby</div>
+            <div class="role">Owner · Operator</div>
+          </div>
+          <div class="years">
+            <span class="n">28</span>
+            <span class="l">Years of craft</span>
+          </div>
+        </figcaption>
+      </figure>
+      <div class="about__panel-body">
+        <ul class="about__list">
+          <li><span class="marker">01</span><span>Owner-operated — the person you call is the person on your car.</span></li>
+          <li><span class="marker">02</span><span>Mobile service across the Las Vegas valley. We come to your driveway.</span></li>
+          <li><span class="marker">03</span><span>Spot-free water system &amp; pro-grade products on every appointment.</span></li>
+          <li><span class="marker">04</span><span>Honest pricing — no upsells, no surprise fees, no rotating crews.</span></li>
+        </ul>
       </div>
-      <ul class="about__list">
-        <li><span class="marker">01</span><span>Owner-operated — the person you call is the person on your car.</span></li>
-        <li><span class="marker">02</span><span>Mobile service across the Las Vegas valley. We come to your driveway.</span></li>
-        <li><span class="marker">03</span><span>Spot-free water system &amp; pro-grade products on every appointment.</span></li>
-        <li><span class="marker">04</span><span>Honest pricing — no upsells, no surprise fees, no rotating crews.</span></li>
-      </ul>
     </aside>
   </div>
 </section>
